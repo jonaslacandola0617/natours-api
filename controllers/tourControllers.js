@@ -10,4 +10,4 @@ class TourController {
   async delete(req, res) {}
 }
 
-export default new TourController();
+module.exports = new TourController();

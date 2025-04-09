@@ -1,6 +1,6 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
-import UserController from '../controllers/userController';
+const UserController = require('../controllers/userController');
 
 const router = Router();
 
@@ -11,4 +11,4 @@ router
   .patch(UserController.update)
   .delete(UserController.delete);
 
-export default router;
+module.exports = router;

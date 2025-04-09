@@ -10,4 +10,4 @@ class UserController {
   async delete(req, res) {}
 }
 
-export default new UserController();
+module.exports = new UserController();
