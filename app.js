@@ -11,6 +11,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.set('query parser', 'extended');
 app.use(express.static('public'));
 
 app.use('/api/v1/tours', tourRouter);
