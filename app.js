@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorControllers');
 
 const app = express();
 
@@ -20,11 +21,9 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
 app.use((req, res, next) => {
-  const error = new AppError('Route not found', 404);
-
-  next(error);
+  next(new AppError(`Route ${req.originalUrl}, cannot be found`, 404));
 });
 
-app.use((err, req, res, next) => {});
+app.use(globalErrorHandler);
 
 module.exports = app;
